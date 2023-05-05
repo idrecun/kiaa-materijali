@@ -1,27 +1,26 @@
 #include <iostream>
 #include <vector>
-#include <queue>
+#include <stack>
 
 using namespace std;
 
-vector<int> bfs(int v, vector< vector<int> >& graf) {
-	vector<int> udaljenost(graf.size(), -1);
-	queue<int> q;
+void dfs(int v, vector< vector<int> >& graf) {
+	vector<bool> obidjen(graf.size());
+	stack<int> q;
 
 	q.push(v);
-	udaljenost[v] = 0;
+	obidjen[v] = true;
 
 	while(!q.empty()) {
-		int t = q.front(); q.pop();
+		int t = q.top(); q.pop();
+		cout << t << '\n';
 
 		for(int u : graf[t])
-			if(udaljenost[u] == -1) {
+			if(!obidjen[u]) {
 				q.push(u);
-				udaljenost[u] = udaljenost[t] + 1;
+				obidjen[u] = true;
 			}
 	}
-
-	return udaljenost;
 }
 
 int main() {
@@ -37,7 +36,12 @@ int main() {
 		graf[b].push_back(a);
 	}
 
-	bfs(0, graf);
+	dfs(0, graf);
 
 	return 0;
 }
+
+
+
+
+
