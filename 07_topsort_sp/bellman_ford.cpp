@@ -42,10 +42,8 @@ int main() {
 		graf[a].push_back({b, c});
 	}
 
-	vector< vector<int> > D = floyd_warshall(graf);
-	for(int i = 0; i < n; i++) {
-		for(int j = 0; j < n; j++)
-			cout << D[i][j] << ' ';
-		cout << '\n';
-	}
+	vector<int> D = bellman_ford(0, graf);
+	for(int i = 0; i < n; i++)
+		cout << D[i] << ' ';
+	cout << '\n';
 }
