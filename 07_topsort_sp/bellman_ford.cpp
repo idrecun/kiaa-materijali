@@ -11,8 +11,8 @@ struct grana {
 
 int addinf(int x, int y) {
 	if(x == numeric_limits<int>::max() ||
-		 y == numeric_limits<int>::max())
-		return numeric_limits<int>::max();
+	   y == numeric_limits<int>::max())
+	  return numeric_limits<int>::max();
 
 	return x + y;
 }
@@ -26,7 +26,7 @@ vector<int> bellman_ford(int u, vector< vector<grana> >& graf) {
 		for(int v = 0; v < n; v++)
 			if(d[v] < numeric_limits<int>::max())
 				for(grana g : graf[v])
-					d[g.sused] = min(d[g.sused], d[v] + g.duzina);
+					d[g.sused] = min(d[g.sused], addinf(d[v], g.duzina));
 
 	return d;
 }

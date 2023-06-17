@@ -92,6 +92,6 @@ int main() {
 	int n, m, a, b, c, d;
 	cin >> n >> m >> a >> b >> c >> d;
 
-	cout << kto({c - a, b - d}, {n, m}) << '\n';
+	cout << kto({mod(c - a, n), mod(b - d, m)}, {n, m}) << '\n';
 	return 0;
 }
