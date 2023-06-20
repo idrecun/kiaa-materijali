@@ -15,7 +15,7 @@ int velicina(int n) {
 
 vector<cvor> napravi_stablo(vector<int>& niz, int n) {
 	vector<cvor> stablo(2 * n);
-	for(int i = 0; i < n; i++)
+	for(int i = 0; i < niz.size(); i++)
 		stablo[n + i].vrednost = niz[i];
 	for(int i = n - 1; i > 0; i--)
 		stablo[i].vrednost = stablo[2 * i].vrednost + stablo[2 * i + 1].vrednost;
